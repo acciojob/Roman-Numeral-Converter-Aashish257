@@ -12,6 +12,24 @@ function convertToRoman(num) {
   //your code here
   let result = "";
 
+  // Handle subtractive cases manually
+  const subtractive = [
+    ['CM', 900],
+    ['CD', 400],
+    ['XC', 90],
+    ['XL', 40],
+    ['IX', 9],
+    ['IV', 4]
+  ];
+
+  for (let [symbol, value] of subtractive) {
+    while (num >= value) {
+      result += symbol;
+      num -= value;
+    }
+  }
+
+  // Then do the rest using obj
   for (let i = 0; i <= 6; i++) {
     const [symbol, value] = obj[i];
     while (num >= value) {
